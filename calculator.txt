@@ -1,0 +1,106 @@
+//html code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #000;
+    }
+
+    #calculator {
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 5px;
+      background-color: #333;
+    }
+
+    input {
+      grid-column: span 4;
+      width: calc(100% - 20px);
+      margin-bottom: 10px;
+      padding: 10px;
+      font-size: 18px;
+      background-color: #444;
+      color: #fff;
+      border: 1px solid #555;
+      border-radius: 3px;
+    }
+
+    button {
+      width: 100%;
+      height: 50px;
+      font-size: 16px;
+      background-color: #666;
+      color: #fff;
+      border: 1px solid #777;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div id="calculator">
+    <input type="text" id="display" disabled>
+
+    <button onclick="clearDisplay()">AC</button>
+    <button onclick="deleteLast()">DE</button>
+    <button onclick="appendText('.')">.</button>
+    <button onclick="appendText('/')">/</button>
+
+    <button onclick="appendText('7')">7</button>
+    <button onclick="appendText('8')">8</button>
+    <button onclick="appendText('9')">9</button>
+    <button onclick="appendText('*')">*</button>
+
+    <button onclick="appendText('4')">4</button>
+    <button onclick="appendText('5')">5</button>
+    <button onclick="appendText('6')">6</button>
+    <button onclick="appendText('-')">-</button>
+
+    <button onclick="appendText('1')">1</button>
+    <button onclick="appendText('2')">2</button>
+    <button onclick="appendText('3')">3</button>
+    <button onclick="appendText('+')">+</button>
+
+    <button onclick="appendText('00')">00</button>
+    <button onclick="appendText('0')">0</button>
+    <button onclick="calculateResult()">=</button>
+  </div>
+
+  <script>
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function deleteLast() {
+      var currentValue = document.getElementById('display').value;
+      document.getElementById('display').value = currentValue.slice(0, -1);
+    }
+
+    function appendText(text) {
+      document.getElementById('display').value += text;
+    }
+
+    function calculateResult() {
+      var result = eval(document.getElementById('display').value);
+      document.getElementById('display').value = result;
+    }
+  </script>
+</body>
+</html>
+
+
+
+
